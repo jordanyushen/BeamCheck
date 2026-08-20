@@ -25,6 +25,7 @@ logs/
 *.beamcheck.json
 *.pdf
 *.png
+!docs/images/*.png
 
 # IDE and OS metadata
 .idea/
