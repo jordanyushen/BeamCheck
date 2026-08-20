@@ -1,0 +1,9 @@
+[project]
+name = "beamcheck"
+version = "0.1.0"
+description = "Local-first deterministic beam calculation aid"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
