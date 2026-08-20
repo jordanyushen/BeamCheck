@@ -1,11 +1,40 @@
 __pycache__/
 *.py[cod]
-.pytest_cache/
+.Python
+
+# Virtual environments and package metadata
 .venv/
+venv/
+env/
+*.egg-info/
+
+# Test, type-checker, and coverage caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# PyInstaller outputs (BeamCheck.spec is intentionally versioned)
 build/
 dist/
 release/
+
+# Runtime output and local projects
 logs/
 *.beamcheck.json
 *.pdf
 *.png
+
+# IDE and OS metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.log
+*~
+~$*
