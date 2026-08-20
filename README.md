@@ -9,6 +9,7 @@ BeamCheck is a fast, offline beam strength and deflection calculator for Windows
 [![Tests](https://github.com/jordanyushen/BeamCheck/actions/workflows/tests.yml/badge.svg)](https://github.com/jordanyushen/BeamCheck/actions/workflows/tests.yml)
 ![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![Windows](https://img.shields.io/badge/platform-Windows-0078D4?logo=windows&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ![BeamCheck main window](docs/images/beamcheck-main.png)
 
@@ -153,7 +154,7 @@ Bug reports, benchmark cases, documentation improvements, and carefully scoped e
 
 ## License
 
-No open-source license has been selected yet. The repository is publicly readable, but that alone does not grant permission to copy, modify, or redistribute the code. An MIT license is recommended for the initial open-source release, subject to explicit approval by the repository owner.
+BeamCheck is released under the [MIT License](LICENSE).
 
 ## Disclaimer
 

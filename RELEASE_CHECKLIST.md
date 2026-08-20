@@ -33,7 +33,7 @@ Use this checklist for the first public release and adapt it for later versions.
 - [ ] Confirm the download instructions match the uploaded asset exactly.
 - [ ] Set the repository description.
 - [ ] Add relevant repository topics.
-- [ ] Select and add a license only after owner approval.
+- [ ] Confirm the owner-approved MIT `LICENSE` file is included in the release source.
 - [ ] Review `CONTRIBUTING.md` and the issue templates.
 - [ ] Confirm the test workflow passes on GitHub Actions.
 
@@ -41,6 +41,7 @@ Suggested repository metadata for owner review:
 
 - Description: `Offline Windows beam strength and deflection calculator with transparent formulas, diagrams, PDF reports, and EN/FR/DE/ZH UI.`
 - Topics: `beam-calculator`, `structural-engineering`, `civil-engineering`, `engineering-calculations`, `pyside6`, `python`, `windows`, `desktop-app`, `offline`, `pyinstaller`
+- License: MIT
 
 ## 4. Publish the GitHub release
 
