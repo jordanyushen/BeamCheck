@@ -28,3 +28,8 @@ jobs:
         env:
           MPLBACKEND: Agg
         run: python -m pytest -q
+
+      - name: Run verification corpus
+        env:
+          MPLBACKEND: Agg
+        run: python -m beamcheck.verification

@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jordanyushen/BeamCheck/verification/schema/verification_case.schema.json",
+  "title": "BeamCheck verification case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "title",
+    "status",
+    "beam",
+    "section",
+    "material",
+    "loads",
+    "criterion",
+    "expected_reference_id"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "case_id": { "type": "string", "pattern": "^BC-[0-9]{4}$" },
+    "title": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["draft", "verified"] },
+    "expected_reference_id": { "type": "string", "minLength": 1 },
+    "beam": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "length_m"],
+      "properties": {
+        "type": { "enum": ["simply_supported", "cantilever"] },
+        "length_m": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "youngs_modulus_pa", "yield_strength_pa", "density_kg_m3"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "youngs_modulus_pa": { "type": "number", "exclusiveMinimum": 0 },
+        "yield_strength_pa": { "type": "number", "exclusiveMinimum": 0 },
+        "density_kg_m3": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "section": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "width_m", "height_m"],
+          "properties": {
+            "type": { "const": "rectangular" },
+            "width_m": { "type": "number", "exclusiveMinimum": 0 },
+            "height_m": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "diameter_m"],
+          "properties": {
+            "type": { "const": "circular" },
+            "diameter_m": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "outer_width_m", "outer_height_m", "wall_thickness_m"],
+          "properties": {
+            "type": { "const": "rectangular_hollow" },
+            "outer_width_m": { "type": "number", "exclusiveMinimum": 0 },
+            "outer_height_m": { "type": "number", "exclusiveMinimum": 0 },
+            "wall_thickness_m": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "outer_size_m", "wall_thickness_m"],
+          "properties": {
+            "type": { "const": "square_hollow" },
+            "outer_size_m": { "type": "number", "exclusiveMinimum": 0 },
+            "wall_thickness_m": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        }
+      ]
+    },
+    "loads": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "magnitude_n", "position_m"],
+            "properties": {
+              "type": { "const": "point" },
+              "magnitude_n": { "type": "number", "minimum": 0 },
+              "position_m": { "type": "number", "minimum": 0 }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "magnitude_n_per_m"],
+            "properties": {
+              "type": { "const": "full_span_udl" },
+              "magnitude_n_per_m": { "type": "number", "minimum": 0 }
+            }
+          }
+        ]
+      }
+    },
+    "criterion": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "ratio"],
+          "properties": {
+            "type": { "const": "span_ratio" },
+            "ratio": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "allowable_deflection_m"],
+          "properties": {
+            "type": { "const": "custom_allowable" },
+            "allowable_deflection_m": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        }
+      ]
+    }
+  }
+}

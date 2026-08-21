@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "case_id": "BC-0004",
+  "title": "Cantilever beam — full-span uniformly distributed load",
+  "status": "draft",
+  "beam": {
+    "type": "cantilever",
+    "length_m": 4.0
+  },
+  "section": {
+    "type": "rectangular",
+    "width_m": 0.1,
+    "height_m": 0.2
+  },
+  "material": {
+    "name": "Test steel",
+    "youngs_modulus_pa": 200000000000.0,
+    "yield_strength_pa": 250000000.0,
+    "density_kg_m3": 7850.0
+  },
+  "loads": [
+    {
+      "type": "full_span_udl",
+      "magnitude_n_per_m": 2000.0
+    }
+  ],
+  "criterion": {
+    "type": "span_ratio",
+    "ratio": 250.0
+  },
+  "expected_reference_id": "REF-OWNER-REQUIRED-BC-0004"
+}
