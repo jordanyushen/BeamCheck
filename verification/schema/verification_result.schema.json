@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jordanyushen/BeamCheck/verification/schema/verification_result.schema.json",
+  "title": "BeamCheck verification expected result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "expected"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "case_id": { "type": "string", "pattern": "^BC-[0-9]{4}$" },
+    "expected": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "left_reaction_n",
+          "right_reaction_n",
+          "fixed_vertical_n",
+          "fixed_moment_nm",
+          "max_shear_n",
+          "max_moment_nm",
+          "max_bending_stress_pa",
+          "max_deflection_m",
+          "deflection_location_m",
+          "factor_of_safety",
+          "allowable_deflection_m"
+        ]
+      },
+      "additionalProperties": { "$ref": "#/$defs/expected_quantity" }
+    }
+  },
+  "$defs": {
+    "expected_quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "tolerance"],
+      "properties": {
+        "value": { "type": "number" },
+        "tolerance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "enum": ["absolute", "relative"] },
+            "value": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    }
+  }
+}
